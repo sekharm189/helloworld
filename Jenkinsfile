@@ -26,7 +26,7 @@ pipeline {
         	   steps {
 			   
 			   sh "git checkout -b ${branch}"
-			   sh "git ${branch}"
+			   sh "git branch"
 			   sh "git push -u origin ${branch}"
 			   sh "git push  https://${gitUser}:${gitPassword}@github.com/${gitProject} HEAD:${gitBranch} -f"
         }     
