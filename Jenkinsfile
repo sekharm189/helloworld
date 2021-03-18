@@ -27,7 +27,7 @@ pipeline {
 			   
 			   sh "git checkout -b ${branch}"
 			   sh "git branch"
-			   sh "git push  https://${gitUser}:${gitPassword}@github.com/${gitProject} HEAD:${branch} -f"
+			   sh "git push  https://${gitUser}:${gitPassword}@github.com/${gitUser}/${gitProject}.git HEAD:${branch} -f"
         }     
       }
 	    stage('Unit Test') {      
