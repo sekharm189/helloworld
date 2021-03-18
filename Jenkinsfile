@@ -20,10 +20,10 @@ pipeline {
     stages {
 	    stage('Git Branch creation') {      
         	   steps {
-			   branch = "build-${BUILD_NUMBER}"
-			   gitProject = 'helloworld'
-			   gitUser = 'sekharm189@gmail.com'
-			   gitPassword = 'Answer@12!'
+			   branch = build-${BUILD_NUMBER}
+			   gitProject = helloworld
+			   gitUser = sekharm189@gmail.com
+			   gitPassword = Answer@12!
 			   sh "git checkout -b ${branch}"
 			   sh "git ${branch}"
 			   sh "git push -u origin ${branch}"
