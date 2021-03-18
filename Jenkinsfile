@@ -40,14 +40,16 @@ pipeline {
 	}
 	post {
 		always {
-			cleanWs()
+			//cleanWs()
 		}
 		success {
 			echo 'This will run only if successful'
+			cleanWs()
 		}
 		failure {
 			echo 'Unit tests are failed so remote branch is deleted'
 			sh "git push  https://${gitUser}:${gitPassword}@github.com/${gitUser}/${gitProject}.git ${branch} --delete"
+			cleanWs()
 		}
 		unstable {
 			echo 'This will run only if the run was marked as unstable'
