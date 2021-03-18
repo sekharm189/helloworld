@@ -41,6 +41,7 @@ pipeline {
 	post {
 		always {
 			//cleanWs()
+			echo 'This will run always'
 		}
 		success {
 			echo 'This will run only if successful'
