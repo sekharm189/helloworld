@@ -22,6 +22,7 @@ pipeline {
         	   steps {
 			   sh 'git checkout -b build-${BUILD_NUMBER}' 
 			   sh "git branch"
+			   sh 'git push -u origin build-${BUILD_NUMBER}'
         }     
       }
 	    stage('Unit Test') {      
