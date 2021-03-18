@@ -18,25 +18,31 @@ pipeline {
 		jdk 'jdk-1.8.0_121'
 	}
 	stages {
-		stage('Git Branch creation') {      
+		/*stage('Git Branch creation') {      
 			steps {
 				sh "git checkout -b ${branch}"
 				sh "git branch"
 				sh "git push  https://${gitUser}:${gitPassword}@github.com/${gitUser}/${gitProject}.git HEAD:${branch} -f"
-				//sh "git branch -d ${branch}"
 			}     
+		}*/
+		stage('Build') {   
+			steps {
+				sh "git checkout -b ${branch}"
+				sh "git branch"
+				sh "git push  https://${gitUser}:${gitPassword}@github.com/${gitUser}/${gitProject}.git HEAD:${branch} -f"
+				//sh "mvn -f pom.xml clean compile install -U -DbuildNumber=${BUILD_NUMBER} -DskipTests=true"
+			
+			}
 		}
 		stage('Unit Test') {      
 			steps {
-				sh 'mvn -f pom.xml test -DskipTests=true' 
+				sh 'mvn -f pom.xml test'
+				sh "git commit -a -m 'Fix broken email address'"
+				sh 'git checkout master'
+				sh "git merge ${branch}"
 			}     
 		}
-		stage('Build') {   
-			steps {
-				sh "mvn -f pom.xml clean compile install -U -DbuildNumber=${BUILD_NUMBER} -DskipTests=true"
-				archiveArtifacts artifacts: 'target/*.jar'
-			}
-		}
+		
 	}
 	post {
 		always {
