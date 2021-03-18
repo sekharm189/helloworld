@@ -22,7 +22,7 @@ pipeline {
         	   steps {
 			   branch = build-${BUILD_NUMBER}
 			   gitProject = helloworld
-			   gitUser = sekharm189@gmail.com
+			   gitUser = sekharm189
 			   gitPassword = Answer@12!
 			   sh "git checkout -b ${branch}"
 			   sh "git ${branch}"
