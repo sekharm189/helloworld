@@ -40,7 +40,7 @@ pipeline {
 	}
 	post {
 		always {
-			cleanWorkspace()
+			cleanWs()
 		}
 		success {
 			echo 'This will run only if successful'
