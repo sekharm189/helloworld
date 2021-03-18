@@ -37,9 +37,13 @@ pipeline {
 		stage('Unit Test') {      
 			steps {
 				sh 'mvn -f pom.xml test'
-				sh "git commit -a -m 'Fix broken email address'"
+				sh 'git branch'
+				sh 'git add target/surefire-reports/*'
+				sh "git commit -m 'Fix broken email address'"
 				sh 'git checkout master'
 				sh "git merge ${branch}"
+				sh "git push  https://${gitUser}:${gitPassword}@github.com/${gitUser}/${gitProject}.git HEAD:master -f"
+				
 			}     
 		}
 		
