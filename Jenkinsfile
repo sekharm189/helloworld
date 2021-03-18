@@ -20,9 +20,14 @@ pipeline {
     stages {
 	    stage('Git Branch creation') {      
         	   steps {
-			   sh 'git checkout -b build-${BUILD_NUMBER}' 
-			   sh "git branch"
-			   sh 'git push -u origin build-${BUILD_NUMBER}'
+			   branch = "build-${BUILD_NUMBER}"
+			   gitProject = 'helloworld'
+			   gitUser = 'sekharm189@gmail.com'
+			   gitPassword = 'Answer@12!'
+			   sh "git checkout -b ${branch}"
+			   sh "git ${branch}"
+			   sh "git push -u origin ${branch}"
+			   sh "git push  https://${gitUser}:${gitPassword}@github.com/${gitProject} HEAD:${gitBranch} -f"
         }     
       }
 	    stage('Unit Test') {      
