@@ -20,7 +20,7 @@ pipeline {
     stages {
 	    stage('Git Branch creation') {      
         	   steps {
-			   branch = build-${BUILD_NUMBER}
+			   branch = build-"${BUILD_NUMBER}"
 			   gitProject = helloworld
 			   gitUser = sekharm189
 			   gitPassword = Answer_12
