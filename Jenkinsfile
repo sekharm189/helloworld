@@ -30,7 +30,7 @@ pipeline {
 				sh "git checkout -b ${branch}"
 				sh "git branch"
 				sh "git push  https://${gitUser}:${gitPassword}@github.com/${gitUser}/${gitProject}.git HEAD:${branch} -f"
-				//sh "mvn -f pom.xml clean compile install -U -DbuildNumber=${BUILD_NUMBER} -DskipTests=true"
+				sh "mvn -f pom.xml clean compile install -U -DbuildNumber=${BUILD_NUMBER} -DskipTests=true"
 			
 			}
 		}
@@ -38,7 +38,7 @@ pipeline {
 			steps {
 				sh 'mvn -f pom.xml test'
 				sh 'git branch'
-				sh 'git add target/surefire-reports/*'
+				sh 'git add target/surefire-reports/* -f'
 				sh "git commit -m 'Fix broken email address'"
 				sh 'git checkout master'
 				sh "git merge ${branch}"
