@@ -7,10 +7,10 @@ pipeline {
     }	
 
     environment {
-	    branch = build-"${BUILD_NUMBER}"
-	    gitProject = helloworld
-	    gitUser = sekharm189
-	    gitPassword = Answer_12
+	    branch = "build-${BUILD_NUMBER}"
+	    gitProject = 'helloworld'
+	    gitUser = 'sekharm189'
+	    gitPassword = 'Answer_12'
 	    GITHUB_TOKEN = credentials('github-03')  	
 	
     }    
