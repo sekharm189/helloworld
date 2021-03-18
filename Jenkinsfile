@@ -28,7 +28,7 @@ pipeline {
 			   sh "git checkout -b ${branch}"
 			   sh "git branch"
 			   sh "git push  https://${gitUser}:${gitPassword}@github.com/${gitUser}/${gitProject}.git HEAD:${branch} -f"
-			   sh "git branch -d ${branch}"
+			   //sh "git branch -d ${branch}"
 			   sh "git push https://${gitUser}:${gitPassword}@github.com/${gitUser}/${gitProject}.git ${branch} --delete"
         }     
       }
