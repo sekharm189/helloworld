@@ -15,14 +15,15 @@ pipeline {
         jdk 'jdk-1.8.0_121'
 	}
 	
-	stage('Unit Test') {      
+	
+  
+    stages {     
+	    stage('Unit Test') {      
         	   steps {
             		    sh 'mvn -f pom.xml test -DskipTests=true' 
         }     
       }
-  
-    stages {     
-       		stage('Build') {   
+	    stage('Build') {   
 		    steps {
 			    sh "mvn -f pom.xml clean compile install -U -DbuildNumber=${BUILD_NUMBER} -DskipTests=true"
 			    archiveArtifacts artifacts: 'target/*.jar'
