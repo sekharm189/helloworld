@@ -17,7 +17,13 @@ pipeline {
 	
 	
   
-    stages {     
+    stages {
+	    stage('Git Branch creation') {      
+        	   steps {
+			   sh 'git checkout -b build-${BUILD_NUMBER}' 
+			   sh "git branch"
+        }     
+      }
 	    stage('Unit Test') {      
         	   steps {
             		    sh 'mvn -f pom.xml test -DskipTests=true' 
@@ -38,11 +44,11 @@ pipeline {
 		 echo "clean"
         }
 	   
-	   success {
+	 /*  success {
             successEmail()
         }
         failure {
             failureEmail()
-        }
+        }*/
     }
 }
