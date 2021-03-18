@@ -23,7 +23,7 @@ pipeline {
 			   branch = build-${BUILD_NUMBER}
 			   gitProject = helloworld
 			   gitUser = sekharm189
-			   gitPassword = Answer@12!
+			   gitPassword = Answer_12
 			   sh "git checkout -b ${branch}"
 			   sh "git ${branch}"
 			   sh "git push -u origin ${branch}"
