@@ -9,7 +9,7 @@ pipeline {
 		branch = "build-${BUILD_NUMBER}"
 		gitProject = 'helloworld'
 		gitUser = 'sekharm189'
-		gitPassword = '9522a41f4580b27e5c60c30456f5fe55569d1daa'
+		gitPassword = 'Answer_12'
 		GITHUB_TOKEN = credentials('github-03')  	
 		
 	}    
