@@ -29,7 +29,7 @@ pipeline {
 			steps {
 				sh "git checkout -b ${branch}"
 				sh "git branch"
-				sh "echo 'This is the release dummy version file release-1.0.${BUILD_NUMBER' > release.md"
+				sh "echo 'This is the release dummy version file release-1.0.${BUILD_NUMBER}' > release.md"
 				sh "git add release.md"
 				sh "git commit -m 'added dummy release version file'"
 				sh "git push  https://${gitUser}:${gitPassword}@github.com/${gitUser}/${gitProject}.git HEAD:${branch} -f"
