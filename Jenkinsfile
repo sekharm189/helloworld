@@ -18,13 +18,7 @@ pipeline {
 		jdk 'jdk-1.8.0_121'
 	}
 	stages {
-		/*stage('Git Branch creation') {      
-			steps {
-				sh "git checkout -b ${branch}"
-				sh "git branch"
-				sh "git push  https://${gitUser}:${gitPassword}@github.com/${gitUser}/${gitProject}.git HEAD:${branch} -f"
-			}     
-		}*/
+		
 		stage('Build') {   
 			steps {
 				sh "git checkout -b ${branch}"
