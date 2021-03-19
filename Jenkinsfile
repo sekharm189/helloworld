@@ -9,7 +9,7 @@ pipeline {
 		branch = "build-${BUILD_NUMBER}"
 		gitProject = 'helloworld'
 		gitUser = 'sekharm189'
-		gitPassword = 'Answer_12'
+		gitPassword = '2c83a81c0d2d53156fcb82de7268e6ffa6ab74f8'
 		GITHUB_TOKEN = credentials('github-03')  	
 		
 	}    
@@ -29,6 +29,9 @@ pipeline {
 			steps {
 				sh "git checkout -b ${branch}"
 				sh "git branch"
+				sh "echo 'This is the release dummy version file release-1.0.${BUILD_NUMBER' > release.md"
+				sh "git add release.md"
+				sh "git commit -m 'added dummy release version file'"
 				sh "git push  https://${gitUser}:${gitPassword}@github.com/${gitUser}/${gitProject}.git HEAD:${branch} -f"
 				sh "mvn -f pom.xml clean compile install -U -DbuildNumber=${BUILD_NUMBER} -DskipTests=true"
 			
